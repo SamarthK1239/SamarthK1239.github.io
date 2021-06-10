@@ -2,11 +2,11 @@
  
  List of contents
  <ul>
-  <li>[Programming](#programming)</li>
-  <li>[Freelancing](#freelancing)</li>
-  <li>[Internship](#internship)</li>
-  <li>[Social Causes](#social-cause)</li>
-  <li>[Other Interests](#other-interests)</li>
+  <li>[Programming](# programming)</li>
+  <li>[Freelancing](# freelancing)</li>
+  <li>[Internship](# internship)</li>
+  <li>[Social Causes](# social-cause)</li>
+  <li>[Other Interests](# other-interests)</li>
  </ul>
  
 ### Programming
