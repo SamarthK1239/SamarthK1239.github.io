@@ -21,4 +21,4 @@ Important links:
   <li>[Portfolio][1]</li>
 </ul>
  
- [1]: https://samarthk1239.github.io/portfolio.html
+ [1]: <https://samarthk1239.github.io/portfolio.html> "Portfolio"
