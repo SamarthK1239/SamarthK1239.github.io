@@ -1,37 +1,21 @@
-## Welcome to GitHub Pages
+## Welcome!
 
-You can use the [editor on GitHub](https://github.com/SamarthK1239/SamarthK1239.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
+Hey there! I'm Samarth Kulkarni. Welcome to my website!
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+On this website, you'll be able to access:
+<ul>
+  <li>Documentation for projects</li>
+  <li>My portfolio, including my other website</li>
+  <li>My interests, hobbies and passions</li>
+  <li>and much more!</li>
+ </ul>
+ 
+ If you'd like to reach out to me for more information about anything at all, you can send me an email at <kulkarni.samarth@yahoo.com>
+ 
+ # A little bit about myself
+ 
+ I'm a high school senior (aka I'm in the 12th grade). I do enjoy academic studies but my true interests lie in the areas of programming. It's the one thing that I can sit up all night doing, even without any coffee :)
+ 
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/SamarthK1239/SamarthK1239.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+ 
+ 
