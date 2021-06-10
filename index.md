@@ -17,6 +17,4 @@ On this website, you'll be able to access:
  I'm a high school senior (aka I'm in the 12th grade). I do enjoy academic studies but my true interests lie in the areas of programming. It's the one thing that I can sit up all night doing, even without any coffee :)
  
 Important links:
-[Portfolio](https://samarthk1239.github.io/portfolio.html)
-[Achievements](https://samarthk1239.github.io/achievements.html)
-[Projects](https://samarthk1239.github.io/projects.html)
+[Portfolio](https://samarthk1239.github.io/portfolio.html) | [Achievements](https://samarthk1239.github.io/achievements.html) | [Projects](https://samarthk1239.github.io/projects.html)
