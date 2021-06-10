@@ -18,7 +18,7 @@ On this website, you'll be able to access:
  
 Important links:
 <ul>
-  <li>[Portfolio](https://samarthk1239.github.io/portfolio.html)</li>
+  <li>[Portfolio][1]</li>
 </ul>
  
- [Portfolio](https://samarthk1239.github.io/portfolio.html)
+ [1]: https://samarthk1239.github.io/portfolio.html
