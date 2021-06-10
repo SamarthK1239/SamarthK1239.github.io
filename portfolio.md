@@ -1,4 +1,4 @@
- # Who I am and What I do
+ ## Who I am and What I do
  
  List of contents
  <ul>
@@ -37,8 +37,7 @@
  
  Taken together, all the donations I have made over the last 4 years have fed 130+ children with 48,000+ meals!
  
- ### Other Interests
- 
+### Other Interests
  Apart from my focused interesting in programming, I really enjoy cooking, and am a foodie at heart. I usually watch cooking shows when I'm on a break or getting bored, and if something really interests me, I give making it a shot.
  
  I'm not really into most conventional sports, but I did take horseback riding lessons for a few years and absolutely loved it. I was quite good at it too, and my instructors wanted me to start competeing. Unfortunately two falls, the first resulting in stitches and the second in a broken collarbone, freaked my parents out enough to not let me continue. If given the chance, I would absolutely try again!
