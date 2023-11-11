@@ -2,7 +2,7 @@
 
 Here's a list of major projects that you can find on my GitHub, I am currently in the process of writing documentation for a lot of these projects, so you may not be able to access them right now.
 
-- [OpenAI API Shenanigans]() | [Github](https://github.com/SamarthK1239/OpenAI-Api-Shenanigans)
+- [OpenAI API Shenanigans](https://samarthk1239.github.io/project-writeups/OpenAI-API-Shenanigans.html) | [Github](https://github.com/SamarthK1239/OpenAI-Api-Shenanigans)
 - [SuDoKu Solver]() | [Github](https://github.com/SamarthK1239/SuDoKu-solver)
 - [Image Processing]() | [Github](https://github.com/SamarthK1239/Image-Processing-Practice)
 - [RSA-PGP]() | [Github](https://github.com/SamarthK1239/RSA-PGP)
