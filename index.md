@@ -1,6 +1,6 @@
 ## Welcome!
 
-Welcome to my website! My name is Samarth Kulkarni and I'm currently a freshman at Penn State, where I'm studying computer science. I've been passionate about programming for almost a decade now, and I love participating in hackathons and other competitive programming events. When I'm not busy coding, you can usually find me playing badminton or billiards, or watching a movie with friends! Through this website, I hope to share my experiences, insights, and projects with you all. Thank you for visiting!
+Hello there! My name is Samarth Kulkarni and I'm currently a sophomore at Penn State, where I'm studying computer science. I've been passionate about programming for almost a decade now, and I love participating in hackathons and other competitive programming events. When I'm not busy coding, you can usually find me playing badminton or billiards, or watching a movie with friends!
 
 On this website, you'll be able to access:
 <ul>
