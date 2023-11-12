@@ -3,7 +3,7 @@
 Yep, that's the title. I'm... not entirely sure why, but it was 3 in the morning and my brain was on backup power. Aaaaaanyways, on to the stuff you're actually here for.
 
 ## The Idea
-Thie project is intended to be long term, essentially evolving in tandem with the OpenAI ecosystem and offerings. Since I started this project with the intention of learning about the API in steps, it has quite a few scripts that function independently. There are more complex projects with multiple scripts on here, and those will have more comprehensive writeups below.
+This is intended to be a long term project, essentially evolving in tandem with the OpenAI ecosystem and offerings. Since I started this project with the intention of learning about the API in steps, it has quite a few scripts that function independently. There are more complex projects with multiple scripts on here, and those will have more comprehensive writeups below.
 
 ## List of Scripts/Sub-Projects
 - [Script](https://github.com/SamarthK1239/OpenAI-Api-Shenanigans/blob/main/OpenAI-API/image_generator.py) Image Generation
@@ -64,3 +64,20 @@ response.choices[0].message.content
 ## Image Generation
 This is the first script in this project to use Dall-E. In its current state, it uses ```Dall-E-3``` to create __one__ image with resolution ```1024x1024```. It takes input from the user and creates an image based on it. Prompt design is very important (as it is everywhere else in this project). The more detail you give it, the more likely the model returns an image that you really want.
 
+When we want to access the image generation offerings of the OpenAI API, we need to use the ```client.images``` reference. For this script, it's as simple as calling ```client.images.generate()```.
+
+There are more required parameters here, in addition to the two basic ones (```model``` and ```prompt```). You must also specify the number of images (```n```) and the resolution of the image you want to generate (```size```). Note that for ```Dall-E-3```, the maximum supported resolution is ```1792x1024 (or 1024x1792)```, whereas all other offerings allow a maximum resolution of ```1024x1024```. The tradeoff here is the fact that E-3 only allows one image to be generated, where the others allow up to 10 images to be generated.
+
+Here's what a complete image generation request looks like:
+```python
+response = openai.images.generate(
+  model="dall-e-3",
+  prompt=prompt,
+  n=1,
+  size="1024x1024"
+)
+```
+Keep in mind that image generation is an expensive process and running this code repeatedly, especially for larger resolutions, can result in costs accumulating quickly. That being said, this is still, at worst, a dollar ($1) for 20 images generated, so it's not all that bad.
+
+## Image Variations
+This builds on the functionality from above, by creating variations of previously generated images. Only the ```Dall-E-2``` model supports the creation of variations, and as such, the resolution is limited to ```1024x1024```.
