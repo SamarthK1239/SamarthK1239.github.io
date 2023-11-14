@@ -70,14 +70,33 @@ There are more required parameters here, in addition to the two basic ones (```m
 
 Here's what a complete image generation request looks like:
 ```python
-response = openai.images.generate(
+response = client.images.generate(
   model="dall-e-3",
   prompt=prompt,
   n=1,
   size="1024x1024"
 )
 ```
+This call returns an ImageResponse object, from which you can then extract a web URL by calling ```response.data[0].url```. Now you can choose what you'd like to do with the URL. I chose to get the image from the source URL and write it to a local file. If you're curious about how to do this, the code for this is in the script linked above!
+
 Keep in mind that image generation is an expensive process and running this code repeatedly, especially for larger resolutions, can result in costs accumulating quickly. That being said, this is still, at worst, a dollar ($1) for 20 images generated, so it's not all that bad.
 
 ## Image Variations
 This builds on the functionality from above, by creating variations of previously generated images. Only the ```Dall-E-2``` model supports the creation of variations, and as such, the resolution is limited to ```1024x1024```.
+
+This is _different_ from editing images using the API, since variations take an existing image and put a new spin on it based on what it is visually. Editing an image (not implemented in this project yet) involves adding a layer mask on the image and then telling the model what it needs to fill in (sort of like Adobe Firefly). 
+
+Image variations are best visualized as slowly guiding the model in the direction that most closely resembles your desired output. For example, you could generate one source image, and then 4 variations of that image. Then you could choose the one that's closest to what you want, and repeat the variation process on that image alone. Repeat this process enough times and you can get surprisingly close to what you initially visualized!
+
+Using this offering of the API is pretty similar to generating images, with one major difference: Instead of providing a guiding prompt, you give it an image instead. (That and the particular function you call is also different but that's a given).
+
+```python
+client = openai.images.create_variation(
+  image=open("image.jpg", "wb"),
+  n=1,
+  size="1024x1024"
+)
+```
+Another minor difference here is the fact that providing a specific model isn't necessary. Since only ```Dall-E-2``` supports image variations, the function call defaults to that model.
+
+Pulling the image variations is exactly the same as above, using the syntax: ```response.data[0].url```. Similarly, you can do what you like with the URL, I chose to, once again, write the image to a local file.
