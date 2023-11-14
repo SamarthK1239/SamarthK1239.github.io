@@ -13,4 +13,4 @@ Hello there! My name is Samarth Kulkarni and I'm currently a sophomore at Penn S
  If you'd like to reach out to me for more information about anything at all, you can send me an email at <kulkarni.samarth@yahoo.com> or my [Penn State email](mailto:ssk5542@psu.edu)
  
 **Important links:**
-[Profile](https://samarthk1239.github.io/portfolio.html) | [Achievements](https://samarthk1239.github.io/achievements.html) | [Projects](https://samarthk1239.github.io/projects.html)
+[Profile](https://samarthk1239.github.io/profile.html) | [Achievements](https://samarthk1239.github.io/achievements.html) | [Projects](https://samarthk1239.github.io/projects.html)
