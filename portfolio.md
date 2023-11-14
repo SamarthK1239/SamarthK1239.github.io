@@ -1,43 +1,33 @@
-## Who I am and What I do
- 
- List of contents
- <ul>
-  <li>Programming</li>
-  <li>Freelancing</li>
-  <li>Internship</li>
-  <li>Social Causes</li>
-  <li>Other Interests</li>
- </ul>
- 
-### Programming
- As you'll probably know by now, I'm an avid programmer.
- 
- Over the course of my 7 years of programming, i've worked on a host of different projects. Most of these have involved hardware elements and an arduino, but I have developed software only products as well. I also do some freelance web design in my free time and especially during summers.
- 
-### Freelancing
- I run my own website and blog at www.scholarfun.com. The main theme is education, and I handpick news articles and write my own blogs. It also has a used bookstore with a payment gateway to fundraise for my social cause. In all, I have over 2800 unique users on my website. I have run the website for over 5 years and have run fundraisers for over 4 years.
- 
- I have also developed two websites on a freelance basis:
- 
- The first one was for an artist who was looking to sell her art online. This included a blog, gallery, payment gateway and automatic chatbot. I was given a monetary compensation for the time and effort for this project. You can find it at www.novartium.com
- 
- The second one was a personal blog for a doctor who was looking to share her works of literature. This includes a gallery, blog section and special pages to showcase the works. I was also given monetary compensation for this project. You can find it at www.tobedecided.com
- 
-### Internship
- Over the course of the summer of 2020, I worked under Dr. Bruce Campbell of Brown University to research and develop a Brain Computer Interface (BCI). This is a system that reads the brain waves of an individual and can interpret what they mean. I am currently writing and intend to publish a paper on this subject with our findings and procedures.
- 
- Over the two months, we formulated a method to take Brain waves, process them, and then use a Machine Learning algorithm called an LSTM to interpret them and predict what they may mean. We constantly collaborated, shared ideas, code and more with each other.
- 
-### Social Cause
- The main social cause I carry out is, in conjunction to the theme of my website, www.scholarfun.com, education. I run fundraisers on my website, through both the bookstore and events I host. All funds collected go towards the Akshaya Patra Foundation, which supports underpriveleged children in school by providing them with midday meals.
- 
- Last year I held webinars with the theme of careers. These were to help my peers and juniors with selecting a path of study and to expose them to streams they may have not considered. Viewers were encouraged to donate to the charity fund if they found the session helpful. I was also running a facebook campaign to collect funds.
- 
- Every year, I set a goal for myself. The first year I started fundraising, I started small, with only Rs. 5,000. Then the next year that sum jumped to Rs. 11,000. The year after, I collected Rs. 22,000. And finally, last year, I set and reached the ambitious target of Rs. 1,10,000.
- 
- Taken together, all the donations I have made over the last 4 years have fed 130+ children with 48,000+ meals!
- 
-### Other Interests
- Apart from my focused interesting in programming, I really enjoy cooking, and am a foodie at heart. I usually watch cooking shows when I'm on a break or getting bored, and if something really interests me, I give making it a shot.
- 
- I'm not really into most conventional sports, but I did take horseback riding lessons for a few years and absolutely loved it. I was quite good at it too, and my instructors wanted me to start competeing. Unfortunately two falls, the first resulting in stitches and the second in a broken collarbone, freaked my parents out enough to not let me continue. If given the chance, I would absolutely try again!
+## Profile
+I'm Samarth Kulkarni, a passionate and results-driven Computer Science enthusiast currently pursuing a Bachelor's degree at The Pennsylvania State University. As a sophomore with a focus on Artificial Intelligence, Cloud Technologies, and App Development, I bring a wealth of knowledge and hands-on experience to the table.
+
+### Summary:
+I am an energetic and committed professional with a strong command of programming languages such as Java, Python, and SQL. Keenly interested in staying abreast of the latest technological advancements, I thrive in collaborative team environments and am eager to contribute my skills as an intern.
+
+### Experience:
+In my role as a Part-Time IT Support Specialist at The Pennsylvania State University, I provided end-user customer service and technical support. I efficiently diagnosed and resolved issues related to the Penn State network and services, showcasing my technical prowess and commitment to customer satisfaction. Additionally, as part of the Stage Crew at the Bryce Jordan Center, I contributed to lighting and music arrangements for various events, demonstrating my ability to work seamlessly in a cohesive team.
+
+### Personal Projects:
+I have a strong background in AI development, including a mentorship in Brain-Computer Interfaces where I developed an AI-powered application for the analysis of brain waves. I also created the InsuPred App, a Machine Learning-based solution to assist diabetics in managing insulin intake. My ongoing AI development projects, with a focus on Generative AI, can be explored on my GitHub: [SamarthK1239](https://github.com/SamarthK1239).
+
+### Languages:
+Fluent in English, Hindi, and Kannada, I am equipped with diverse linguistic skills.
+
+### Certifications:
+I hold certifications as an Oracle Certified Foundations Associate, AWS Certified Cloud Practitioner, and Microsoft Certified: Azure Fundamentals, attesting to my proficiency in cloud technologies.
+
+### Skills:
+My skill set includes expertise in AI & ML, Cloud Technologies, Java, Python, App Development, IntelliJ, IOT, Smart Device Programming, SQL, and PostgreSQL.
+
+Strengths:
+My strengths lie in problem-solving, attention to detail, and effective team collaboration, qualities that have been instrumental in my academic and professional journey.
+
+### Organizations:
+Active involvement in Penn State Robotics, Penn State Formula Racing, and my role as the Founder and Team Leader of Scholarfun.com charity and blog showcase my commitment to both technological and community-oriented endeavors.
+
+I am also the Treasurer of the newly formed Quantum Computing Club at Penn State, where I manage club finances, and aid in administrative tasks as needed.
+
+### Achievements:
+I am proud to have won the SyntHacks 2019 competition for a project intended to help the disaster response services communicate more effectively and secured the runner-up position at Oak Codefest 2021 for a project to reduce food wastage that made use of Artificial Intelligence and Computer Vision. Additionally, I successfully raised funds for the Akshaya Patra Foundation, providing over 45,000 meals to underprivileged children in rural India through my website and various events.
+
+Explore my world of technology and innovation on [GitHub](https://github.com/SamarthK1239). I am excited about the prospect of contributing to dynamic organizations as an intern and am open to new opportunities and challenges. Let's connect and explore the possibilities together!
