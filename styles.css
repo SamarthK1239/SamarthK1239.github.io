@@ -267,3 +267,57 @@ body {
         font-size: 11px;
     }
 }
+
+/* Hover reveal styles for contact information */
+.contact-hidden {
+    position: relative;
+    cursor: pointer;
+    color: #888;
+    font-style: italic;
+    transition: all 0.3s ease;
+}
+
+.contact-hidden::before {
+    content: "[hover to reveal]";
+    display: inline;
+}
+
+.contact-hidden .hidden-content {
+    display: none;
+}
+
+.contact-hidden:hover::before {
+    display: none;
+}
+
+.contact-hidden:hover .hidden-content {
+    display: inline;
+    color: #00ffff;
+    font-style: normal;
+}
+
+.contact-hidden:hover {
+    color: #00ffff;
+}
+
+.contact-hidden:hover::after {
+    content: " [click to copy]";
+    color: #888;
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.contact-hidden:active {
+    transform: scale(0.98);
+}
+
+.contact-copied {
+    color: #00ff00 !important;
+}
+
+.contact-copied::after {
+    content: " [copied!]";
+    color: #00ff00;
+    font-size: 0.8em;
+    font-style: italic;
+}
