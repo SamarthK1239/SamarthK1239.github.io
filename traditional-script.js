@@ -168,7 +168,7 @@ function typewriterEffect() {
 
     const text = subtitle.textContent;
     subtitle.textContent = '';
-    subtitle.style.borderRight = '2px solid #00ffff';
+    subtitle.classList.add('typing');
     
     let i = 0;
     const typeInterval = setInterval(() => {
@@ -177,10 +177,9 @@ function typewriterEffect() {
             i++;
         } else {
             clearInterval(typeInterval);
-            // Blinking cursor effect
-            setInterval(() => {
-                subtitle.style.borderRight = subtitle.style.borderRight === 'none' ? '2px solid #00ffff' : 'none';
-            }, 500);
+            // Switch to completed typing state
+            subtitle.classList.remove('typing');
+            subtitle.classList.add('typing-complete');
         }
     }, 100);
 }

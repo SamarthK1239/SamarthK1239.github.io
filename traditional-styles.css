@@ -53,6 +53,13 @@ body {
 .nav-title {
     color: #00ffff;
     font-weight: 700;
+    animation: blink 1s infinite;
+    margin-left: 0.3rem;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
 }
 
 .nav-links {
@@ -144,6 +151,20 @@ body {
     font-size: clamp(1.2rem, 2.5vw, 1.8rem);
     color: #00ffff;
     margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.hero-subtitle.typing::after {
+    content: '_';
+    color: #00ffff;
+    animation: blink 1s infinite;
+}
+
+.hero-subtitle.typing-complete::after {
+    content: '_';
+    color: #00ffff;
+    animation: blink 1s infinite;
 }
 
 .hero-description {
