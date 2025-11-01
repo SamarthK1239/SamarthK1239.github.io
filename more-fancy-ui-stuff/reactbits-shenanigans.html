@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DesignAI - Revolutionizing Interior Design with Artificial Intelligence</title>
+    <meta name="description" content="Transform your living space with AI-powered interior design. Get personalized design recommendations, room layouts, and styling suggestions.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Reset & Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            /* Modern Color Palette */
+            --primary-50: #eff6ff;
+            --primary-100: #dbeafe;
+            --primary-200: #bfdbfe;
+            --primary-300: #93c5fd;
+            --primary-400: #60a5fa;
+            --primary-500: #3b82f6;
+            --primary-600: #2563eb;
+            --primary-700: #1d4ed8;
+            --primary-800: #1e40af;
+            --primary-900: #1e3a8a;
+
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+
+            --accent-400: #f59e0b;
+            --accent-500: #d97706;
+            --success-500: #10b981;
+            --error-500: #ef4444;
+
+            /* Spacing Scale */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+
+            /* Border Radius */
+            --radius-sm: 0.125rem;
+            --radius-md: 0.375rem;
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-3xl: 1.5rem;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: var(--gray-50);
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container & Layout */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-left: var(--space-6);
+            padding-right: var(--space-6);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding-left: var(--space-4);
+                padding-right: var(--space-4);
+            }
+        }
+
+        /* Button Components */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-3) var(--space-6);
+            border-radius: var(--radius-lg);
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            gap: var(--space-2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-800) 100%);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--gray-700);
+            border: 1px solid var(--gray-300);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gray-50);
+            border-color: var(--gray-400);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-lg {
+            padding: var(--space-4) var(--space-8);
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+
+        /* Card Components */
+        .card {
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            padding: var(--space-8);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-2px);
+        }
+
+        .card-feature {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-feature::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.05), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .card-feature:hover::before {
+            opacity: 1;
+            animation: shimmer 0.6s ease-in-out;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Icon Components */
+        .icon-wrapper {
+            width: 4rem;
+            height: 4rem;
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-6);
+            background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Typography */
+        .text-6xl {
+            font-size: 3.75rem;
+            line-height: 1;
+            font-weight: 800;
+        }
+
+        .text-5xl {
+            font-size: 3rem;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .text-4xl {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 700;
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+            font-weight: 600;
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            font-weight: 600;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            font-weight: 500;
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+
+        .text-center { text-align: center; }
+        .text-gray-600 { color: var(--gray-600); }
+        .text-gray-700 { color: var(--gray-700); }
+        .text-primary { color: var(--primary-600); }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 50%, var(--accent-500) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Spacing Utilities */
+        .mb-4 { margin-bottom: var(--space-4); }
+        .mb-6 { margin-bottom: var(--space-6); }
+        .mb-8 { margin-bottom: var(--space-8); }
+        .mb-12 { margin-bottom: var(--space-12); }
+        .mb-16 { margin-bottom: var(--space-16); }
+        .mb-20 { margin-bottom: var(--space-20); }
+
+        .mt-8 { margin-top: var(--space-8); }
+        .mt-12 { margin-top: var(--space-12); }
+        .mt-16 { margin-top: var(--space-16); }
+
+        /* Section Spacing */
+        .section {
+            padding: var(--space-20) 0;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: var(--space-16) 0;
+            }
+            
+            .text-6xl {
+                font-size: 2.5rem;
+            }
+            
+            .text-5xl {
+                font-size: 2rem;
+            }
+        }
+
+        /* Grid System */
+        .grid {
+            display: grid;
+            gap: var(--space-8);
+        }
+
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+        @media (max-width: 1024px) {
+            .lg\\:grid-cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 768px) {
+            .md\\:grid-cols-2,
+            .lg\\:grid-cols-3 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+        }
+
+        /* Flex Utilities */
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .gap-4 { gap: var(--space-4); }
+        .gap-6 { gap: var(--space-6); }
+        .gap-8 { gap: var(--space-8); }
+
+        /* Background Utilities */
+        .bg-gradient {
+            background: linear-gradient(135deg, var(--primary-50) 0%, var(--primary-100) 100%);
+        }
+
+        .bg-white {
+            background: white;
+        }
+
+        /* Animation Utilities */
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--gray-300);
+            border-top: 2px solid var(--primary-600);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white" style="position: fixed; top: 0; width: 100%; z-index: 50; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.95); border-bottom: 1px solid var(--gray-200);">
+        <div class="container">
+            <div class="flex justify-between items-center" style="padding: var(--space-4) 0;">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div style="width: 2.5rem; height: 2.5rem; background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.125rem;">
+                        D
+                    </div>
+                    <span class="text-xl" style="font-weight: 700; color: var(--gray-800);">DesignAI</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="nav-links" style="display: flex; align-items: center; gap: var(--space-8);">
+                    <a href="#features" style="color: var(--gray-600); text-decoration: none; font-weight: 500; transition: color 0.2s ease;">Features</a>
+                    <a href="#how-it-works" style="color: var(--gray-600); text-decoration: none; font-weight: 500; transition: color 0.2s ease;">How It Works</a>
+                    <a href="#pricing" style="color: var(--gray-600); text-decoration: none; font-weight: 500; transition: color 0.2s ease;">Pricing</a>
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" style="display: none; background: none; border: none; font-size: 1.5rem; color: var(--gray-600); cursor: pointer;">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 100;">
+        <div style="position: absolute; top: 0; right: 0; width: 80%; max-width: 300px; height: 100%; background: white; padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-6);">
+            <button class="mobile-menu-close" style="align-self: flex-end; background: none; border: none; font-size: 1.5rem; color: var(--gray-600); cursor: pointer;">
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="#features" style="color: var(--gray-700); text-decoration: none; font-weight: 500; padding: var(--space-3) 0; border-bottom: 1px solid var(--gray-200);">Features</a>
+            <a href="#how-it-works" style="color: var(--gray-700); text-decoration: none; font-weight: 500; padding: var(--space-3) 0; border-bottom: 1px solid var(--gray-200);">How It Works</a>
+            <a href="#pricing" style="color: var(--gray-700); text-decoration: none; font-weight: 500; padding: var(--space-3) 0; border-bottom: 1px solid var(--gray-200);">Pricing</a>
+            <a href="#contact" class="btn btn-primary" style="margin-top: var(--space-4);">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="section bg-gradient" style="padding-top: 8rem; min-height: 100vh; display: flex; align-items: center;">
+        <div class="container">
+            <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+                <!-- Hero Content -->
+                <div class="animate-fade-in">
+                    <h1 class="text-6xl gradient-text mb-6">
+                        Transform Your Space with <span style="display: block; margin-top: var(--space-2);">AI-Powered Design</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8" style="max-width: 600px;">
+                        Revolutionize your interior design process with our cutting-edge AI technology. Get personalized design recommendations, room layouts, and styling suggestions tailored to your unique taste and space.
+                    </p>
+                    <div class="flex gap-4 mb-12">
+                        <a href="#contact" class="btn btn-primary btn-lg">
+                            <i class="fas fa-magic"></i>
+                            Start Designing
+                        </a>
+                        <a href="#how-it-works" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-play"></i>
+                            Watch Demo
+                        </a>
+                    </div>
+                    
+                    <!-- Social Proof -->
+                    <div style="display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap;">
+                        <div>
+                            <div class="text-2xl" style="font-weight: 700; color: var(--gray-800);">10,000+</div>
+                            <div style="color: var(--gray-600); font-size: 0.875rem;">Happy Customers</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl" style="font-weight: 700; color: var(--gray-800);">50,000+</div>
+                            <div style="color: var(--gray-600); font-size: 0.875rem;">Designs Created</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl" style="font-weight: 700; color: var(--gray-800);">99%</div>
+                            <div style="color: var(--gray-600); font-size: 0.875rem;">Satisfaction Rate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual -->
+                <div class="animate-float" style="position: relative;">
+                    <div style="background: white; border-radius: var(--radius-3xl); padding: var(--space-8); box-shadow: var(--shadow-2xl); position: relative; overflow: hidden;">
+                        <!-- Decorative Elements -->
+                        <div style="position: absolute; top: -50px; right: -50px; width: 100px; height: 100px; background: linear-gradient(135deg, var(--primary-400) 0%, var(--primary-500) 100%); border-radius: 50%; opacity: 0.1;"></div>
+                        <div style="position: absolute; bottom: -30px; left: -30px; width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent-400) 0%, var(--accent-500) 100%); border-radius: 50%; opacity: 0.1;"></div>
+                        
+                        <!-- Mock Design Interface -->
+                        <div style="text-align: center;">
+                            <div style="width: 80px; height: 80px; margin: 0 auto var(--space-6); background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%); border-radius: var(--radius-2xl); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3 class="text-2xl mb-4">AI Design Assistant</h3>
+                            <p class="text-gray-600 mb-6">Upload your room photo and let our AI create stunning design variations</p>
+                            
+                            <!-- Mock Features -->
+                            <div style="display: flex; justify-content: space-around; margin-top: var(--space-8);">
+                                <div style="text-align: center;">
+                                    <div style="width: 50px; height: 50px; margin: 0 auto var(--space-2); background: var(--primary-100); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--primary-600);">
+                                        <i class="fas fa-camera"></i>
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: var(--gray-600);">Photo Upload</span>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="width: 50px; height: 50px; margin: 0 auto var(--space-2); background: var(--success-500); opacity: 0.1; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--success-500);">
+                                        <i class="fas fa-cog fa-spin"></i>
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: var(--gray-600);">AI Processing</span>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="width: 50px; height: 50px; margin: 0 auto var(--space-2); background: var(--accent-400); opacity: 0.1; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--accent-500);">
+                                        <i class="fas fa-palette"></i>
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: var(--gray-600);">Design Options</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section bg-white">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl gradient-text mb-6">Powerful AI Features</h2>
+                <p class="text-xl text-gray-600" style="max-width: 700px; margin: 0 auto;">
+                    Our advanced AI technology provides comprehensive design solutions tailored to your unique style and space requirements.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+                <!-- Feature 1: Smart Room Analysis -->
+                <div class="card card-feature">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="text-2xl mb-4">Smart Room Analysis</h3>
+                    <p class="text-gray-600 mb-6">
+                        Our AI analyzes your room's dimensions, lighting, and existing elements to provide accurate design recommendations that fit perfectly.
+                    </p>
+                    <ul style="text-align: left; color: var(--gray-600); line-height: 1.8;">
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>3D space recognition</li>
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Lighting analysis</li>
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Furniture detection</li>
+                        <li><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Traffic flow optimization</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 2: Style Matching -->
+                <div class="card card-feature">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="text-2xl mb-4">Personalized Style Matching</h3>
+                    <p class="text-gray-600 mb-6">
+                        Discover your unique design style through our AI-powered questionnaire and get recommendations that truly reflect your personality.
+                    </p>
+                    <ul style="text-align: left; color: var(--gray-600); line-height: 1.8;">
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Style preference analysis</li>
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Color palette generation</li>
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Material recommendations</li>
+                        <li><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Mood board creation</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3: Instant Visualization -->
+                <div class="card card-feature">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="text-2xl mb-4">Instant 3D Visualization</h3>
+                    <p class="text-gray-600 mb-6">
+                        See your design ideas come to life with photorealistic 3D renderings and virtual reality previews of your redesigned space.
+                    </p>
+                    <ul style="text-align: left; color: var(--gray-600); line-height: 1.8;">
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Photorealistic rendering</li>
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>VR/AR compatibility</li>
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Multiple design variations</li>
+                        <li><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Real-time modifications</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 4: Smart Shopping -->
+                <div class="card card-feature">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h3 class="text-2xl mb-4">Smart Shopping Assistant</h3>
+                    <p class="text-gray-600 mb-6">
+                        Get curated furniture and decor recommendations with direct links to purchase, complete with budget tracking and delivery coordination.
+                    </p>
+                    <ul style="text-align: left; color: var(--gray-600); line-height: 1.8;">
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Curated product recommendations</li>
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Budget optimization</li>
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Price comparison</li>
+                        <li><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Delivery coordination</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 5: Design Collaboration -->
+                <div class="card card-feature">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-2xl mb-4">Expert Collaboration</h3>
+                    <p class="text-gray-600 mb-6">
+                        Connect with professional interior designers for expert advice, custom modifications, and specialized design consultations.
+                    </p>
+                    <ul style="text-align: left; color: var(--gray-600); line-height: 1.8;">
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Professional designer access</li>
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Real-time collaboration</li>
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Custom design requests</li>
+                        <li><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Video consultations</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 6: Project Management -->
+                <div class="card card-feature">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="text-2xl mb-4">Project Management</h3>
+                    <p class="text-gray-600 mb-6">
+                        Track your design project from concept to completion with timeline management, progress tracking, and milestone notifications.
+                    </p>
+                    <ul style="text-align: left; color: var(--gray-600); line-height: 1.8;">
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Timeline management</li>
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Progress tracking</li>
+                        <li style="margin-bottom: var(--space-2);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Budget monitoring</li>
+                        <li><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Automated notifications</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section bg-gradient">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl gradient-text mb-6">How DesignAI Works</h2>
+                <p class="text-xl text-gray-600" style="max-width: 700px; margin: 0 auto;">
+                    Transform your space in just four simple steps with our intelligent design process.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8">
+                <!-- Step 1 -->
+                <div class="card" style="text-align: center; position: relative;">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 30px; height: 30px; background: var(--primary-600); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.875rem;">1</div>
+                    <div style="width: 4rem; height: 4rem; margin: var(--space-4) auto var(--space-6); background: var(--primary-100); border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; color: var(--primary-600); font-size: 1.5rem;">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <h3 class="text-xl mb-4">Upload Your Space</h3>
+                    <p class="text-gray-600">
+                        Simply upload photos of your room or use our room scanner feature to capture your space in 3D.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="card" style="text-align: center; position: relative;">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 30px; height: 30px; background: var(--primary-600); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.875rem;">2</div>
+                    <div style="width: 4rem; height: 4rem; margin: var(--space-4) auto var(--space-6); background: var(--accent-400); opacity: 0.1; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; color: var(--accent-500); font-size: 1.5rem;">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="text-xl mb-4">Define Preferences</h3>
+                    <p class="text-gray-600">
+                        Tell us about your style preferences, budget, and functional requirements through our smart questionnaire.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="card" style="text-align: center; position: relative;">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 30px; height: 30px; background: var(--primary-600); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.875rem;">3</div>
+                    <div style="width: 4rem; height: 4rem; margin: var(--space-4) auto var(--space-6); background: var(--success-500); opacity: 0.1; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; color: var(--success-500); font-size: 1.5rem;">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3 class="text-xl mb-4">AI Magic Happens</h3>
+                    <p class="text-gray-600">
+                        Our AI analyzes your space and preferences to generate multiple personalized design options.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="card" style="text-align: center; position: relative;">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 30px; height: 30px; background: var(--primary-600); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.875rem;">4</div>
+                    <div style="width: 4rem; height: 4rem; margin: var(--space-4) auto var(--space-6); background: var(--error-500); opacity: 0.1; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; color: var(--error-500); font-size: 1.5rem;">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="text-xl mb-4">Implement & Enjoy</h3>
+                    <p class="text-gray-600">
+                        Get your shopping list, timeline, and professional support to bring your new design to life.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTA in How It Works -->
+            <div class="text-center mt-16">
+                <a href="#contact" class="btn btn-primary btn-lg">
+                    <i class="fas fa-rocket"></i>
+                    Start Your Design Journey
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section bg-white">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl gradient-text mb-6">What Our Customers Say</h2>
+                <p class="text-xl text-gray-600" style="max-width: 700px; margin: 0 auto;">
+                    Join thousands of satisfied customers who have transformed their spaces with DesignAI.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="card" style="position: relative; padding-top: var(--space-12);">
+                    <!-- Quote Icon -->
+                    <div style="position: absolute; top: var(--space-6); left: var(--space-6); width: 40px; height: 40px; background: var(--primary-100); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--primary-600);">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-6" style="font-style: italic; line-height: 1.7;">
+                        "DesignAI completely transformed my living room! The AI understood my style perfectly and suggested furniture I never would have considered. The 3D visualization helped me see everything before making purchases."
+                    </p>
+                    
+                    <div style="display: flex; align-items: center; gap: var(--space-4);">
+                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-400) 0%, var(--primary-500) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                            S
+                        </div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--gray-800);">Sarah Johnson</div>
+                            <div style="color: var(--gray-600); font-size: 0.875rem;">Homeowner, San Francisco</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rating -->
+                    <div style="margin-top: var(--space-4); color: var(--accent-500);">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="card" style="position: relative; padding-top: var(--space-12);">
+                    <div style="position: absolute; top: var(--space-6); left: var(--space-6); width: 40px; height: 40px; background: var(--primary-100); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--primary-600);">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-6" style="font-style: italic; line-height: 1.7;">
+                        "As a busy professional, I didn't have time for traditional interior design consultations. DesignAI gave me professional-quality results in just a few hours. The shopping integration saved me weeks of research!"
+                    </p>
+                    
+                    <div style="display: flex; align-items: center; gap: var(--space-4);">
+                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--accent-400) 0%, var(--accent-500) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                            M
+                        </div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--gray-800);">Michael Chen</div>
+                            <div style="color: var(--gray-600); font-size: 0.875rem;">Software Engineer, Seattle</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: var(--space-4); color: var(--accent-500);">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="card" style="position: relative; padding-top: var(--space-12);">
+                    <div style="position: absolute; top: var(--space-6); left: var(--space-6); width: 40px; height: 40px; background: var(--primary-100); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--primary-600);">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-6" style="font-style: italic; line-height: 1.7;">
+                        "I was skeptical about AI design, but DesignAI exceeded all my expectations. The collaboration with professional designers was seamless, and the final result is magazine-worthy. Highly recommended!"
+                    </p>
+                    
+                    <div style="display: flex; align-items: center; gap: var(--space-4);">
+                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--success-500) 0%, var(--primary-500) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                            E
+                        </div>
+                        <div>
+                            <div style="font-weight: 600; color: var(--gray-800);">Emily Rodriguez</div>
+                            <div style="color: var(--gray-600); font-size: 0.875rem;">Marketing Director, Austin</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: var(--space-4); color: var(--accent-500);">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section bg-gradient">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl gradient-text mb-6">Choose Your Design Plan</h2>
+                <p class="text-xl text-gray-600" style="max-width: 700px; margin: 0 auto;">
+                    Flexible pricing options to fit every budget and design need. Start for free or upgrade for premium features.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-8" style="max-width: 1000px; margin: 0 auto;">
+                <!-- Starter Plan -->
+                <div class="card" style="position: relative; text-align: center;">
+                    <div style="padding: var(--space-8) var(--space-6);">
+                        <h3 class="text-2xl mb-4" style="color: var(--gray-800);">Starter</h3>
+                        <div style="margin-bottom: var(--space-6);">
+                            <span class="text-4xl" style="font-weight: 700; color: var(--gray-800);">Free</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <p class="text-gray-600 mb-8">Perfect for getting started with AI-powered design</p>
+                        
+                        <ul style="text-align: left; margin-bottom: var(--space-8); line-height: 1.8;">
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>1 room design per month</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Basic style questionnaire</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>3 design variations</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Basic shopping recommendations</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Email support</li>
+                        </ul>
+                        
+                        <a href="#contact" class="btn btn-secondary" style="width: 100%;">Get Started Free</a>
+                    </div>
+                </div>
+
+                <!-- Professional Plan -->
+                <div class="card" style="position: relative; text-align: center; border: 2px solid var(--primary-600); transform: scale(1.05);">
+                    <!-- Popular Badge -->
+                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary-600); color: white; padding: var(--space-1) var(--space-4); border-radius: var(--radius-lg); font-size: 0.75rem; font-weight: 600;">
+                        MOST POPULAR
+                    </div>
+                    
+                    <div style="padding: var(--space-8) var(--space-6);">
+                        <h3 class="text-2xl mb-4" style="color: var(--gray-800);">Professional</h3>
+                        <div style="margin-bottom: var(--space-6);">
+                            <span class="text-4xl" style="font-weight: 700; color: var(--gray-800);">$29</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <p class="text-gray-600 mb-8">Ideal for homeowners and design enthusiasts</p>
+                        
+                        <ul style="text-align: left; margin-bottom: var(--space-8); line-height: 1.8;">
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Unlimited room designs</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Advanced style analysis</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>10 design variations per room</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>3D visualization & VR preview</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Detailed shopping lists</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Budget tracking</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Priority support</li>
+                        </ul>
+                        
+                        <a href="#contact" class="btn btn-primary" style="width: 100%;">Start Professional Trial</a>
+                    </div>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="card" style="position: relative; text-align: center;">
+                    <div style="padding: var(--space-8) var(--space-6);">
+                        <h3 class="text-2xl mb-4" style="color: var(--gray-800);">Enterprise</h3>
+                        <div style="margin-bottom: var(--space-6);">
+                            <span class="text-4xl" style="font-weight: 700; color: var(--gray-800);">$99</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <p class="text-gray-600 mb-8">For professionals and design businesses</p>
+                        
+                        <ul style="text-align: left; margin-bottom: var(--space-8); line-height: 1.8;">
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Everything in Professional</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Professional designer collaboration</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Custom brand integration</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Client project management</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>White-label solutions</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>API access</li>
+                            <li style="margin-bottom: var(--space-3); color: var(--gray-700);"><i class="fas fa-check text-primary" style="margin-right: var(--space-2);"></i>Dedicated account manager</li>
+                        </ul>
+                        
+                        <a href="#contact" class="btn btn-secondary" style="width: 100%;">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Money Back Guarantee -->
+            <div class="text-center mt-12">
+                <div style="display: inline-flex; align-items: center; gap: var(--space-3); background: white; padding: var(--space-4) var(--space-6); border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">
+                    <div style="width: 40px; height: 40px; background: var(--success-500); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <div style="font-weight: 600; color: var(--gray-800);">30-Day Money-Back Guarantee</div>
+                        <div style="color: var(--gray-600); font-size: 0.875rem;">Not satisfied? Get a full refund, no questions asked.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/CTA Section -->
+    <section id="contact" class="section bg-white">
+        <div class="container">
+            <div class="grid lg:grid-cols-2 grid-cols-1 gap-16 items-center">
+                <!-- Contact Content -->
+                <div>
+                    <h2 class="text-5xl gradient-text mb-6">Ready to Transform Your Space?</h2>
+                    <p class="text-xl text-gray-600 mb-8">
+                        Join thousands of satisfied customers who have revolutionized their interior design process with DesignAI. Get started today and see the magic happen.
+                    </p>
+
+                    <!-- Benefits List -->
+                    <div style="margin-bottom: var(--space-8);">
+                        <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
+                            <div style="width: 24px; height: 24px; background: var(--primary-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.75rem;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span class="text-gray-700">Get started in less than 5 minutes</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
+                            <div style="width: 24px; height: 24px; background: var(--primary-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.75rem;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span class="text-gray-700">No design experience required</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
+                            <div style="width: 24px; height: 24px; background: var(--primary-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.75rem;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span class="text-gray-700">Professional results guaranteed</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--space-3);">
+                            <div style="width: 24px; height: 24px; background: var(--primary-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.75rem;">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span class="text-gray-700">Cancel anytime, no hidden fees</span>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div style="display: flex; flex-wrap: wrap; gap: var(--space-6); margin-bottom: var(--space-8);">
+                        <div style="display: flex; align-items: center; gap: var(--space-3);">
+                            <div style="width: 40px; height: 40px; background: var(--primary-100); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--primary-600);">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 500; color: var(--gray-800);">Email Us</div>
+                                <div style="color: var(--gray-600); font-size: 0.875rem;">hello@designai.com</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: var(--space-3);">
+                            <div style="width: 40px; height: 40px; background: var(--primary-100); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--primary-600);">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 500; color: var(--gray-800);">Call Us</div>
+                                <div style="color: var(--gray-600); font-size: 0.875rem;">1-800-DESIGN-AI</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="card" style="padding: var(--space-10);">
+                    <h3 class="text-3xl mb-8 text-center">Start Your Design Journey</h3>
+                    
+                    <form id="contactForm" style="display: flex; flex-direction: column; gap: var(--space-6);">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                            <div>
+                                <label style="display: block; margin-bottom: var(--space-2); font-weight: 500; color: var(--gray-700);">First Name</label>
+                                <input type="text" name="firstName" required style="width: 100%; padding: var(--space-3); border: 1px solid var(--gray-300); border-radius: var(--radius-lg); font-size: 1rem; transition: border-color 0.2s ease;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: var(--space-2); font-weight: 500; color: var(--gray-700);">Last Name</label>
+                                <input type="text" name="lastName" required style="width: 100%; padding: var(--space-3); border: 1px solid var(--gray-300); border-radius: var(--radius-lg); font-size: 1rem; transition: border-color 0.2s ease;">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label style="display: block; margin-bottom: var(--space-2); font-weight: 500; color: var(--gray-700);">Email Address</label>
+                            <input type="email" name="email" required style="width: 100%; padding: var(--space-3); border: 1px solid var(--gray-300); border-radius: var(--radius-lg); font-size: 1rem; transition: border-color 0.2s ease;">
+                        </div>
+                        
+                        <div>
+                            <label style="display: block; margin-bottom: var(--space-2); font-weight: 500; color: var(--gray-700);">Project Type</label>
+                            <select name="projectType" required style="width: 100%; padding: var(--space-3); border: 1px solid var(--gray-300); border-radius: var(--radius-lg); font-size: 1rem; background: white; transition: border-color 0.2s ease;">
+                                <option value="">Select your project type</option>
+                                <option value="single-room">Single Room Design</option>
+                                <option value="whole-home">Whole Home Makeover</option>
+                                <option value="office">Office/Commercial Space</option>
+                                <option value="consultation">Design Consultation</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label style="display: block; margin-bottom: var(--space-2); font-weight: 500; color: var(--gray-700);">Tell us about your project</label>
+                            <textarea name="message" rows="4" placeholder="Describe your space, style preferences, and any specific requirements..." style="width: 100%; padding: var(--space-3); border: 1px solid var(--gray-300); border-radius: var(--radius-lg); font-size: 1rem; resize: vertical; transition: border-color 0.2s ease;"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                            <span class="submit-text">
+                                <i class="fas fa-paper-plane"></i>
+                                Get My Free Design Consultation
+                            </span>
+                            <span class="loading-text" style="display: none;">
+                                <div class="spinner"></div>
+                                Processing...
+                            </span>
+                        </button>
+                    </form>
+                    
+                    <!-- Success Message -->
+                    <div id="successMessage" style="display: none; margin-top: var(--space-6); padding: var(--space-4); background: var(--success-500); opacity: 0.1; border-radius: var(--radius-lg); text-align: center;">
+                        <div style="color: var(--success-500); font-weight: 500;">
+                            <i class="fas fa-check-circle"></i>
+                            Thank you! We'll contact you within 24 hours to start your design journey.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--gray-900); color: white; padding: var(--space-16) 0 var(--space-8);">
+        <div class="container">
+            <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div style="width: 2.5rem; height: 2.5rem; background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.125rem;">
+                            D
+                        </div>
+                        <span class="text-xl" style="font-weight: 700;">DesignAI</span>
+                    </div>
+                    <p style="color: var(--gray-400); margin-bottom: var(--space-6); line-height: 1.6;">
+                        Revolutionizing interior design with artificial intelligence. Transform your space with personalized, professional-quality design solutions.
+                    </p>
+                    <div style="display: flex; gap: var(--space-4);">
+                        <a href="#" style="width: 40px; height: 40px; background: var(--gray-800); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--gray-400); transition: all 0.2s ease; text-decoration: none;">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" style="width: 40px; height: 40px; background: var(--gray-800); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--gray-400); transition: all 0.2s ease; text-decoration: none;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" style="width: 40px; height: 40px; background: var(--gray-800); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--gray-400); transition: all 0.2s ease; text-decoration: none;">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Links -->
+                <div>
+                    <h4 style="font-weight: 600; margin-bottom: var(--space-6); color: white;">Product</h4>
+                    <ul style="list-style: none; line-height: 2;">
+                        <li><a href="#features" style="color: var(--gray-400); text-decoration: none; transition: color 0.2s ease;">Features</a></li>
+                        <li><a href="#pricing" style="color: var(--gray-400); text-decoration: none; transition: color 0.2s ease;">Pricing</a></li>
+                        <li><a href="#" style="color: var(--gray-400); text-decoration: none; transition: color 0.2s ease;">API Documentation</a></li>
+                        <li><a href="#" style="color: var(--gray-400); text-decoration: none; transition: color 0.2s ease;">Integrations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Links -->
+                <div>
+                    <h4 style="font-weight: 600; margin-bottom: var(--space-6); color: white;">Support</h4>
+                    <ul style="list-style: none; line-height: 2;">
+                        <li><a href="#" style="color: var(--gray-400); text-decoration: none; transition: color 0.2s ease;">Help Center</a></li>
+                        <li><a href="#" style="color: var(--gray-400); text-decoration: none; transition: color 0.2s ease;">Design Guidelines</a></li>
+                        <li><a href="#contact" style="color: var(--gray-400); text-decoration: none; transition: color 0.2s ease;">Contact Us</a></li>
+                        <li><a href="#" style="color: var(--gray-400); text-decoration: none; transition: color 0.2s ease;">Community</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company Links -->
+                <div>
+                    <h4 style="font-weight: 600; margin-bottom: var(--space-6); color: white;">Company</h4>
+                    <ul style="list-style: none; line-height: 2;">
+                        <li><a href="#" style="color: var(--gray-400); text-decoration: none; transition: color 0.2s ease;">About Us</a></li>
+                        <li><a href="#" style="color: var(--gray-400); text-decoration: none; transition: color 0.2s ease;">Careers</a></li>
+                        <li><a href="#" style="color: var(--gray-400); text-decoration: none; transition: color 0.2s ease;">Press</a></li>
+                        <li><a href="#" style="color: var(--gray-400); text-decoration: none; transition: color 0.2s ease;">Partners</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div style="border-top: 1px solid var(--gray-800); padding-top: var(--space-8); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4);">
+                <div style="color: var(--gray-400);">
+                    © 2024 DesignAI. All rights reserved.
+                </div>
+                <div style="display: flex; gap: var(--space-6); flex-wrap: wrap;">
+                    <a href="#" style="color: var(--gray-400); text-decoration: none; font-size: 0.875rem;">Privacy Policy</a>
+                    <a href="#" style="color: var(--gray-400); text-decoration: none; font-size: 0.875rem;">Terms of Service</a>
+                    <a href="#" style="color: var(--gray-400); text-decoration: none; font-size: 0.875rem;">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuClose = document.querySelector('.mobile-menu-close');
+
+        mobileMenuBtn?.addEventListener('click', () => {
+            mobileMenu.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose?.addEventListener('click', () => {
+            mobileMenu.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close mobile menu when clicking outside
+        mobileMenu?.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                mobileMenu.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = 80;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mobileMenu.style.display === 'block') {
+                        mobileMenu.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        contactForm?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const submitText = submitBtn.querySelector('.submit-text');
+            const loadingText = submitBtn.querySelector('.loading-text');
+            
+            // Show loading state
+            submitText.style.display = 'none';
+            loadingText.style.display = 'flex';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                // Hide loading, show success
+                loadingText.style.display = 'none';
+                submitText.style.display = 'flex';
+                submitBtn.disabled = false;
+                
+                successMessage.style.display = 'block';
+                contactForm.style.display = 'none';
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        });
+
+        // Input focus effects
+        document.querySelectorAll('input, select, textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.borderColor = 'var(--primary-500)';
+                this.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.style.borderColor = 'var(--gray-300)';
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // Hover effects for social links
+        document.querySelectorAll('footer a').forEach(link => {
+            if (link.querySelector('i.fab')) {
+                link.addEventListener('mouseenter', function() {
+                    this.style.background = 'var(--primary-600)';
+                    this.style.color = 'white';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.background = 'var(--gray-800)';
+                    this.style.color = 'var(--gray-400)';
+                });
+            }
+        });
+
+        // Navigation link hover effects
+        document.querySelectorAll('.nav-links a:not(.btn)').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.color = 'var(--primary-600)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.color = 'var(--gray-600)';
+            });
+        });
+
+        // Scroll-based navbar background
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = 'var(--shadow-lg)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Responsive navigation
+        function checkScreenSize() {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (window.innerWidth <= 768) {
+                navLinks.style.display = 'none';
+                mobileMenuBtn.style.display = 'block';
+            } else {
+                navLinks.style.display = 'flex';
+                mobileMenuBtn.style.display = 'none';
+                mobileMenu.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Check screen size on load and resize
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+
+        // Add animation on scroll for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

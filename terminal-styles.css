@@ -1,0 +1,481 @@
+/* Terminal Portfolio Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    background: #0c0c0c;
+    color: #cccccc;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+}
+
+.terminal-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    box-shadow: 0 0 50px rgba(0, 255, 0, 0.1);
+}
+
+/* Terminal Header */
+.terminal-header {
+    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    min-height: 40px;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.control.close {
+    background: #ff5f57;
+}
+
+.control.minimize {
+    background: #ffbd2e;
+}
+
+.control.maximize {
+    background: #28ca42;
+}
+
+.control:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.terminal-title {
+    color: #cccccc;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.terminal-menu {
+    display: flex;
+    gap: 10px;
+}
+
+.menu-link {
+    color: #00ffff;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 4px 8px;
+    border: 1px solid #00ffff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.menu-link:hover {
+    background: #00ffff;
+    color: #1a1a1a;
+}
+
+/* Terminal Body */
+.terminal-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #0c0c0c;
+    overflow: hidden;
+}
+
+.terminal-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    line-height: 1.4;
+    font-size: 14px;
+    user-select: text;
+}
+
+/* Scrollbar styling */
+.terminal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-content::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.terminal-content::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+.terminal-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Welcome Message */
+.welcome-message {
+    margin-bottom: 20px;
+}
+
+.ascii-logo {
+    color: #00ff00;
+    font-size: 10px;
+    line-height: 1;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.welcome-text p {
+    margin-bottom: 8px;
+    color: #cccccc;
+}
+
+.welcome-text .highlight {
+    color: #00ffff;
+    font-weight: 500;
+}
+
+/* Terminal Output */
+.output-line {
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.command-line {
+    margin-bottom: 8px;
+}
+
+.command-prompt {
+    color: #00ff00;
+    font-weight: 500;
+}
+
+.command-text {
+    color: #ffffff;
+    margin-left: 4px;
+}
+
+.output-text {
+    color: #cccccc;
+    margin-left: 20px;
+}
+
+.error-text {
+    color: #ff6b6b;
+    margin-left: 20px;
+}
+
+.success-text {
+    color: #00ff00;
+    margin-left: 20px;
+}
+
+.info-text {
+    color: #00ffff;
+    margin-left: 20px;
+}
+
+.warning-text {
+    color: #ffaa00;
+    margin-left: 20px;
+}
+
+/* File/Directory Colors */
+.file-executable {
+    color: #00ff00;
+    font-weight: 500;
+}
+
+.file-directory {
+    color: #00ffff;
+    font-weight: 500;
+}
+
+.file-link {
+    color: #ff00ff;
+    text-decoration: underline;
+}
+
+.file-text {
+    color: #ffffff;
+}
+
+.file-config {
+    color: #ffaa00;
+}
+
+/* Input Line */
+.input-line {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: #0c0c0c;
+    border-top: 1px solid #333;
+    position: relative;
+}
+
+.prompt {
+    color: #00ff00;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+    margin-left: 8px;
+    caret-color: transparent;
+}
+
+.cursor {
+    color: #00ffff;
+    animation: blink 1s infinite;
+    margin-left: 2px;
+    position: absolute;
+    pointer-events: none;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Command Suggestions */
+.suggestions {
+    position: absolute;
+    bottom: 100%;
+    left: 20px;
+    right: 20px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+    transition: background 0.2s ease;
+}
+
+.suggestion-item:hover,
+.suggestion-item.selected {
+    background: #333;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+/* Syntax Highlighting */
+.syntax-command {
+    color: #00ff00;
+    font-weight: 500;
+}
+
+.syntax-flag {
+    color: #ffaa00;
+}
+
+.syntax-path {
+    color: #00ffff;
+}
+
+.syntax-string {
+    color: #ff6b6b;
+}
+
+.syntax-number {
+    color: #ff00ff;
+}
+
+/* Special Content Styles */
+.contact-hidden {
+    color: #888;
+    font-style: italic;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.contact-hidden::before {
+    content: "[hidden - click to reveal]";
+}
+
+.contact-hidden.revealed::before {
+    display: none;
+}
+
+.contact-hidden .hidden-content {
+    display: none;
+}
+
+.contact-hidden.revealed .hidden-content {
+    display: inline;
+    color: #00ffff;
+    font-style: normal;
+}
+
+.contact-hidden.revealed::after {
+    content: " [click to copy]";
+    color: #888;
+    font-size: 0.9em;
+}
+
+.contact-hidden.copied::after {
+    content: " [copied!]";
+    color: #00ff00;
+}
+
+/* Tables */
+.terminal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+.terminal-table th,
+.terminal-table td {
+    text-align: left;
+    padding: 4px 12px;
+    border-bottom: 1px solid #333;
+}
+
+.terminal-table th {
+    color: #00ffff;
+    font-weight: 500;
+}
+
+.terminal-table td {
+    color: #cccccc;
+}
+
+/* Progress Bars */
+.progress-bar {
+    background: #333;
+    height: 4px;
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 8px 0;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #00ff00, #00ffff);
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+/* Links */
+.terminal-link {
+    color: #00ffff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.terminal-link:hover {
+    color: #ffffff;
+    background: rgba(0, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .terminal-header {
+        padding: 6px 12px;
+    }
+    
+    .terminal-title {
+        font-size: 11px;
+    }
+    
+    .menu-link {
+        font-size: 11px;
+        padding: 3px 6px;
+    }
+    
+    .terminal-content {
+        padding: 15px;
+        font-size: 13px;
+    }
+    
+    .ascii-logo {
+        font-size: 8px;
+    }
+    
+    .input-line {
+        padding: 15px;
+    }
+    
+    .terminal-input {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .terminal-controls {
+        gap: 6px;
+    }
+    
+    .control {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .terminal-content {
+        padding: 10px;
+        font-size: 12px;
+    }
+    
+    .ascii-logo {
+        font-size: 6px;
+    }
+    
+    .input-line {
+        padding: 10px;
+    }
+}
+
+/* Selection styling */
+::selection {
+    background: rgba(0, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+/* Animation for new content */
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

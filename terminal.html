@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samarth Kulkarni - Terminal Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="terminal-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,13 +15,16 @@
                 <span class="control minimize"></span>
                 <span class="control maximize"></span>
             </div>
-            <div class="terminal-title">samarth@portfolio:~$</div>
+            <div class="terminal-title">samarth@portfolio: ~/portfolio</div>
+            <div class="terminal-menu">
+                <a href="traditional.html" class="menu-link">GUI Mode</a>
+            </div>
         </div>
         
         <div class="terminal-body">
-            <div class="terminal-output" id="output">
+            <div class="terminal-content" id="terminal-content">
                 <div class="welcome-message">
-                    <pre>
+                    <pre class="ascii-logo">
 ██████╗  ██████╗ ██████╗ ████████╗███████╗ ██████╗ ██╗     ██╗ ██████╗ 
 ██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██╔═══██╗██║     ██║██╔═══██╗
 ██████╔╝██║   ██║██████╔╝   ██║   █████╗  ██║   ██║██║     ██║██║   ██║
@@ -29,28 +32,24 @@
 ██║     ╚██████╔╝██║  ██║   ██║   ██║     ╚██████╔╝███████╗██║╚██████╔╝
 ╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝      ╚═════╝ ╚══════╝╚═╝ ╚═════╝ 
                     </pre>
-                    <p class="intro-text">Welcome to Samarth Kulkarni's interactive portfolio terminal!</p>
-                            <div class="info">
-            <p>Welcome to my interactive portfolio!</p>
-            <p>Type <span class="command">'help'</span> to see available commands</p>
-            <p>Try: <span class="command">ls</span>, <span class="command">cd projects</span>, <span class="command">cat about.md</span></p>
-            <p class="note">New: <a href="terminal.html" class="terminal-link">Enhanced Terminal Mode</a> | <a href="traditional.html" class="gui-link">GUI Mode</a></p>
-        </div>
-                    <br>
+                    <div class="welcome-text">
+                        <p>Welcome to Samarth Kulkarni's Interactive Portfolio Terminal</p>
+                        <p>Computer Science Student & DevSecOps Intern</p>
+                        <p>Type <span class="highlight">'help'</span> to see available commands or <span class="highlight">'ls'</span> to list directories</p>
+                        <p>Use <span class="highlight">Tab</span> for auto-completion and <span class="highlight">↑/↓</span> for command history</p>
+                        <br>
+                    </div>
                 </div>
             </div>
             
-            <div class="terminal-input-line">
-                <span class="prompt">visitor@portfolio:~$ </span>
-                <div class="input-container">
-                    <span class="input-text" id="inputText"></span>
-                    <span class="cursor" id="cursor">▊</span>
-                    <input type="text" id="commandInput" class="terminal-input" autocomplete="off" spellcheck="false">
-                </div>
+            <div class="input-line">
+                <span class="prompt" id="current-prompt">samarth@portfolio:~$ </span>
+                <input type="text" class="terminal-input" id="terminal-input" autocomplete="off" spellcheck="false">
+                <span class="cursor">_</span>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="terminal-script.js"></script>
 </body>
 </html>
